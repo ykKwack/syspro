@@ -9,9 +9,12 @@ main ()
 {
 	int len;
 	int max;
+	int count =0;
 	max = 0;
-	while(gets(line) != NULL)
+	while(count < 5)
 	{
+		count++;
+		gets(line);
 		len = strlen(line);
 		if(len>max)
 		{
@@ -19,6 +22,9 @@ main ()
 			copy(line, longest);
 		}
 	}
-	if(max > 0)
+	while(count != 0)
+	{
 		printf("%s \n", longest);
+		count--;
+	}
 }
