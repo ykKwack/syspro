@@ -7,10 +7,10 @@ char longest[MAXLINE];
 
 main () 
 {
+	char temp[MAXLINE];
 	int len;
 	int max;
 	int count =0;
-	max = 0;
 	while(count < 5)
 	{
 		count++;
