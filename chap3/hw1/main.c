@@ -2,8 +2,9 @@
 #include "copy.h"
 #include <string.h>
 
-char line [MAXLINE];
-char longest[MAXLINE];
+char line[MAXLINE];
+char longest[5][MAXLINE];
+int lengths[5];
 
 main () 
 {
@@ -13,18 +14,31 @@ main ()
 	int count =0;
 	while(count < 5)
 	{
-		count++;
 		gets(line);
-		len = strlen(line);
-		if(len>max)
+		len=strlen(line);
+		copy(line, longest[count]);
+		lengths[count] = len;
+		count++;
+	}
+	for(int i=0; i<count-1; i++)
+	{
+		for(int j=0; j<count; j++)
 		{
-			max=len;
-			copy(line, longest);
+			if(lengths[i] < lengths[j])
+			{
+				int tempLen = lengths[i];
+				lengths[i] = lengths[j];
+				lengths[j] = tempLen;
+
+				char tempStr[MAXLINE];
+				copy(longest[i], tempStr);
+				copy(longest[j], longest[i]);
+				copy(tempStr, longest[j]);
+			}
 		}
 	}
-	while(count != 0)
+	for(i=0; i<count; i++)
 	{
-		printf("%s \n", longest);
-		count--;
+		printf("%s\n", longest[i], lengths[i]);
 	}
 }
