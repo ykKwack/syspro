@@ -19,7 +19,7 @@ main ()
 		lengths[count] = len;
 		count++;
 	}
-	for(i=0; i<count-1; i++)
+	for(i=0; i<count-1; i++) // bubble sort //
 	{
 		for(j=i+1; j<count; j++)
 		{
