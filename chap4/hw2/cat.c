@@ -3,16 +3,21 @@ int main(int argc, char *argv[])
 {
 	FILE *fp;
 	int c;
-	if (argc < 2)
-		fp = stdin;
-	else fp = fopen(argv[1], "r");
 
-	c = getc(fp);
-	while (c != EOF)
+	if (argc < 2)
+		return 1;
+
+	for(int i = 1; i < argc; i++)
 	{
-		putc(c, stdout);
+		fp = fopen(argv[i], "r");
 		c = getc(fp);
+		
+		while(c != EOF)
+		{
+		 	putc(c, stdout);
+			c = getc(fp);
+		}
+		fclose(fp);
 	}
-	fclose(fp);
 	return 0;
 }
